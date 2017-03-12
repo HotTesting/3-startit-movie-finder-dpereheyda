@@ -6,7 +6,7 @@ describe('Movie page', () => {
   
   xit('should open first Movie Card and compare it with opened Movie Page', () => {
     browser.get('')
-    const firstMovieCardContainer = $('div.col-sm-6.col-md-4:nth-child(1) movie-card')
+    let firstMovieCardContainer = $('div.col-sm-6.col-md-4:nth-child(1) movie-card')
     let movieCardPicture = firstMovieCardContainer.$('img').getAttribute('ng-reflect-src').toString().substr(35)
     let movieCardTitle = firstMovieCardContainer.$('h4 a').getText()
     let movieCardRating = firstMovieCardContainer.$('div p small').getText()
