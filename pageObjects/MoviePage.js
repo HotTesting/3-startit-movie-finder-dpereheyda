@@ -5,9 +5,17 @@ class MoviePage extends AbstractPage {
         super()
         this.URL = ''
         this.moviePageTitle = $('app-movie div:nth-child(1) div.col-md-8 h2')
-        this.moviePagePicture = $('app-movie img.thumbnail').getAttribute('ng-reflect-src').toString().substr(35)
+        this.moviePagePicture = $('app-movie img.thumbnail')
         this.moviePageRating = $('app-movie div.col-md-8 small')
-        
+    }
+
+    moviePageIsDisplayed() {
+        let moviePageTitle = protractor.ExpectedConditions.visibilityOf(this.moviePageTitle)
+        return browser.wait(moviePageTitle, 3000, 'Movie title is not visible')
+    }
+
+    getMoviePageTitle() {
+        return this.moviePageTitle.getText()
     }
 }
 

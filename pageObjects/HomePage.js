@@ -11,10 +11,14 @@ class HomePage extends AbstractPage {
 
         // Movie cards
         this.movieCardsInSearchResults = element(by.cssContainingText('movies div', 'Search Results')).$$('movie-card')
-        this.movieCards = $$('movie-card')
-        this.firstMovieCardContainer = this.movieCards.first()
+        this.allMovieCards = $$('movie-card')
+        this.movieCardPicture = $('img')
+        this.movieCardTitle = $('h4 a')
+        this.movieCardReleaseDate = $('div  h4 + p')
+        this.movieCardDetailsLink = $('div p a')
+        this.movieCardRating = $('div p small')
     }
-    
+
     open() {
         super.open()
     }
@@ -22,7 +26,7 @@ class HomePage extends AbstractPage {
     searchForMovie(searchRequest) {
         this.searchField.sendKeys(searchRequest)
         this.goButton.click()
-    }    
+    }
 
     getSearchResults() {
         let waitForSearchMovieCards = protractor.ExpectedConditions.visibilityOf(this.movieCardsInSearchResults)
@@ -30,17 +34,11 @@ class HomePage extends AbstractPage {
         return this.movieCardsInSearchResults
     }
 
-    getMovieCardByIndex(resultIndex) {
-        this.getSingleMovieCard('div.col-sm-6.col-md-4:nth-child(' + resultIndex + ') movie-card')
+    homePageIsDisplayed(){
+        let searchField = protractor.ExpectedConditions.visibilityOf(this.searchField)
+        return browser.wait(searchField, 3000, 'Search field is not visible')
     }
 
-    getSingleMovieCard(pageComponent) {
-        this.movieCardPicture = $(pageComponent + ' img')
-        // movieCardTitle: $(pageComponent + ' h4 a'),
-        // movieCardReleaseDate: $(pageComponent + ' div  h4 + p'),
-        // movieCardDetailsLink: $(pageComponent +' div p a'),
-        // movieCardRating: $(pageComponent + ' div p small')
-    }
 }
 
 module.exports.HomePage = HomePage
