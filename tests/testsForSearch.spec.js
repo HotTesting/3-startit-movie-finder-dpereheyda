@@ -1,7 +1,6 @@
 'use strict'
 
 const EC = protractor.ExpectedConditions
-const browser = protractor.browser
 const HomePage = require('../pageObjects/HomePage.js').HomePage
 
 describe('Search functionality', () => {
@@ -23,7 +22,7 @@ describe('Search functionality', () => {
         let homePage;
         homePage = new HomePage()
 
-        xit('Check all elements in Movie Cards', () => {
+        it('Check all elements in Movie Cards', () => {
 
             let firstMovieCard = homePage.allMovieCards.first()
             let moviePicture = firstMovieCard.$('img')
@@ -40,7 +39,7 @@ describe('Search functionality', () => {
         })
     })
 
-    xdescribe('Search by request', () => {
+    describe('Search by request', () => {
 
         let homePage;
         homePage = new HomePage()

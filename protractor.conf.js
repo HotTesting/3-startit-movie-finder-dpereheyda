@@ -1,5 +1,5 @@
 module.exports.config = {
-    directConnect: true,
+    directConnect: false,
     baseUrl: 'https://movies-finder.firebaseapp.com/',
     specs: ['./tests/*.spec.js'],
     onPrepare: () => {
@@ -12,5 +12,14 @@ module.exports.config = {
             savePath: 'target/screenshots'
             })
         )
-    }
+    },
+//    seleniumArgs: ['-Dwebdriver.edge.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/MicrosoftWebDriver.exe'],
+//    seleniumArgs: ['-Dwebdriver.gecko.driver=node_modules/protractor/node_modules/webdriver-manager/selenium/geckodriver-v0.15.0.exe'],
+    capabilities: {
+        browserName: 'firefox',
+        count: 1,
+        shardTestFiles: false,
+        maxInstances: 1,
+        seleniumAddress: 'http://localhost:4444/wd/hub'
+     }
 }

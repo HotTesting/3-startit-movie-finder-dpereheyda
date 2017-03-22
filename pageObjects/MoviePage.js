@@ -7,6 +7,7 @@ class MoviePage extends AbstractPage {
         this.moviePageTitle = $('app-movie div:nth-child(1) div.col-md-8 h2')
         this.moviePagePicture = $('app-movie img.thumbnail')
         this.moviePageRating = $('app-movie div.col-md-8 small')
+        this.moviePageCateories = $$('.label-info')
     }
 
     moviePageIsDisplayed() {

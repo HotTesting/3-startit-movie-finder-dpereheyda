@@ -1,15 +1,14 @@
 'use strict'
 
 const EC = protractor.ExpectedConditions
-const browser = protractor.browser
 const HomePage = require('../pageObjects/HomePage.js').HomePage
 const MoviePage = require('../pageObjects/MoviePage.js').MoviePage
 
-describe('Movie page', () => {
+xdescribe('Movie page', () => {
     let homePage = new HomePage()
     let moviePage = new MoviePage()
 
-    xit('should open first Movie Card and compare it with opened Movie Page', () => {
+    it('should open first Movie Card and compare it with opened Movie Page', () => {
         homePage.open()
         let firstMovieCardContainer = homePage.allMovieCards.first()
 
